@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:http/http.dart' as http;
 import 'package:lottie/lottie.dart';
@@ -20,11 +21,11 @@ class _MeteoPageState extends State<MeteoPage> {
   Future <void> meteo()async{
     final url=Uri.parse("https://api.openweathermap.org/data/2.5/weather?lat=7.69&lon=-5.03&appid=d27832cd69d312e27c69cb3dc389a6d0&units=metric&lang=fr");
     var message1=await http.get(url);
-setState(() {
-  message=jsonDecode(message1.body);
-});
-    print(message["main"]);
-  }
+  setState(() {
+    message=jsonDecode(message1.body);
+  });
+      print(message["main"]);
+    }
   @override
   void initState(){
     super.initState();
@@ -34,8 +35,8 @@ setState(() {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Stack(
-
+      body: SingleChildScrollView(
+        child: Stack(
         children: [
           Image.asset("assets/images/Gemini_Generated_Image_nyvxktnyvxktnyvx.png",fit: BoxFit.cover,height: MediaQuery.of(context).size.height *1,width:MediaQuery.of(context).size.width *1 ,),
 
@@ -46,15 +47,32 @@ setState(() {
           decoration: BoxDecoration(
             color: Colors.white54,
             borderRadius: BorderRadius.only(topLeft: Radius.circular(MediaQuery.of(context).size.width *0.2),topRight: Radius.circular(MediaQuery.of(context).size.width *0.2))
+          ),child:
+          message!=null?Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+            Container(
+              child: Column(
+              children: [
+                Container(
+                  margin: EdgeInsets.only(top: MediaQuery.of(context).size.height *0.07,),
+                  decoration: BoxDecoration(border: Border(bottom: BorderSide(color: Colors.white38,width: MediaQuery.of(context).size.width *0.01))),
+                  child: Text("Humidité",style: TextStyle(color: Colors.white,fontFamily: "Poppins",fontSize: MediaQuery.of(context).size.width *0.1)),),
+                SizedBox(height: MediaQuery.of(context).size.height *0.02,),
+                Container(child: Text(message["main"]["humidity"].toString()+" %",style: TextStyle(color: Colors.white,fontFamily: "Poppins",fontSize: MediaQuery.of(context).size.width *0.15)),)
+            ],),),
+              Lottie.asset("assets/animations/Weather Day - mist.json",height: MediaQuery.of(context).size.height *0.2,width:MediaQuery.of(context).size.height *0.2 )
+            ],).animate().slideX(duration: Duration(milliseconds: 200)):Text(""),
           ),
-          ),
-          Column(
+          message!=null?Column(
             children: [
             Container(
               alignment: AlignmentDirectional.topStart,
               width: MediaQuery.of(context).size.width *1,
               margin: EdgeInsets.only(top: MediaQuery.of(context).size.height *0.06,left: MediaQuery.of(context).size.width *0.02),
-              child: IconButton(onPressed: (){}, icon: Icon(Icons.menu,color: Colors.white,)),),
+              child: IconButton(onPressed: (){
+                ZoomDrawer.of(context)!.toggle();
+              }, icon: Icon(Icons.menu,color: Colors.white,)),),
 
               Container(
                 margin: EdgeInsets.only(
@@ -80,8 +98,8 @@ setState(() {
                 ),
                 Container(child: Text(message["wind"]["speed"].toString()+" m/s",style: TextStyle(color: Colors.white,fontFamily: "Poppins",fontSize: MediaQuery.of(context).size.width *0.06)),)
               ],)
-          ],)
-          ],),
+          ],).animate().slideX(duration: Duration(milliseconds: 200)):Text("")
+          ],),)
     );
   }
 }

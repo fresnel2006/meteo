@@ -14,8 +14,10 @@ class _ScreenpageState extends State<Screenpage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: ZoomDrawer(
-
+angle: 0,
+          slideWidth: MediaQuery.of(context).size.width *0.8,
           mainScreenTapClose: true,
           menuScreen: MenuPage(),
           mainScreen: MeteoPage()),

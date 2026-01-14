@@ -141,7 +141,7 @@ prefixIcon: Icon(Icons.numbers,color: Color(0xFF51CD96),)
             ),
             SizedBox(height: MediaQuery.of(context).size.height *0.045,),
 
-            Container(child: Text("Une petite appli pensée pour vous, pour connaître la météo et faire tes calculs de moyenne en toute simplicité.",textAlign: TextAlign.center,style: TextStyle(fontFamily: "Poppins",color: Colors.black54),),),
+            Container(child: Text("Une petite appli pensée pour vous, \npour connaître la météo pour Auri et \nfaire tes calculs de moyenne en \ntoute simplicité pour Scheki.",textAlign: TextAlign.center,style: TextStyle(fontFamily: "Poppins",color: Colors.black54),),),
 
           ],
         ),
