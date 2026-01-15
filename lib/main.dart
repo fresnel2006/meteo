@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scheki/Pages/Inscription.dart';
+import 'package:scheki/Pages/Matiere.dart';
 import 'package:scheki/Pages/Redirection.dart';
 
 void main() {

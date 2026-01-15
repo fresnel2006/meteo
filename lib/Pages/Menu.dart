@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:scheki/Pages/Moyenne.dart';
 import 'package:scheki/Pages/Screen.dart';
 
 class MenuPage extends StatefulWidget {
@@ -48,7 +49,7 @@ alignment: Alignment.center,
             SizedBox(height: MediaQuery.of(context).size.height *0.04,),
             GestureDetector(
               onTap: (){
-                
+                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=>MoyennePage()), (route)=>false);
               },
               child: Container(
               alignment: Alignment.center,

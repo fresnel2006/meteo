@@ -71,6 +71,9 @@ flutter:
      - assets/animations/Windblow.json
      - assets/images/Gemini_Generated_Image_nyvxktnyvxktnyvx.png
      - assets/animations/Weather Day - mist.json
+     - assets/animations/Calculate.json
+     - assets/images/image de fond calcule moyenne.jpg
+     - assets/images/image de fond matiere.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

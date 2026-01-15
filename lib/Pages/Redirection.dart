@@ -36,7 +36,9 @@ class _RedirectionPageState extends State<RedirectionPage> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Stack(
+
           children: [
+
           Column(
             children: [
               Container(width: MediaQuery.of(context).size.width *1,),
